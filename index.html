@@ -19,49 +19,37 @@
     	p = playerSelection;
     	c = computerSelection;
 
-		lose = 'you lose';
-		win = 'you win';
-		draw = 'you draw';
-
-		"You Lose! {}Paper beats Rock"
-
+		ad = 'you draw';
+		
 		if (p == 'rock') {
-			if (c == 'paper') {
-			  	res = lose; 
+			if (c == 'paper') {			  	
+			  	ad = "you lose paper beats rock"
 			} else if (c == 'scissors') {
-				res = win;
-			} else {
-				res = draw;
-			}
+				ad = "you win rock beats scissors";
+			} 
 		}
 
 		if (p == 'paper') {
 			if (c == 'rock') {
-			  	res = win; 
+			  	ad = "you win paper beats rock"; 
 			} else if (c == 'scissors') {
-				res = lose;
-			} else {
-				res = draw;
-			}
+				ad = "you lose scissors beat paper";
+			} 
 		}
 
 		if (p == 'scissors') {
 			if (c == 'paper') {
-			  	res = win; 
+			  	ad = "you win scissors beat paper";
 			} else if (c == 'rock') {
-				res = lose;
-			} else {
-				res = draw;
-			}
+				ad = "you lose rock beats scissors";
+			} 
 		}
-		return res;
-
+		return ad;
 	}
 
 	const playerSelection = 'rock'
 	const computerSelection = computerPlay()
 	console.log(playRound(playerSelection, computerSelection))
-
 
 	</script>
 
