@@ -1,11 +1,69 @@
-
+<!DOCTYPE html>
 <html>
+<head>
+	<title>test bench</title>
+</head>
+<body>
+	<h3>test bench</h3>
 
-	<body>
-		<h2>test bench	</h2>
-	<script>
-	
+	<script type="text/javascript">
+
+	ran = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
+		
+	computerPlay = () => {
+	  ss = ran(['Rock', 'Paper', 'Scissors']);
+	  return ss.toLowerCase();	
+    } 
+
+    function playRound(playerSelection, computerSelection) {    	
+    	p = playerSelection;
+    	c = computerSelection;
+
+		lose = 'you lose';
+		win = 'you win';
+		draw = 'you draw';
+
+		"You Lose! {}Paper beats Rock"
+
+		if (p == 'rock') {
+			if (c == 'paper') {
+			  	res = lose; 
+			} else if (c == 'scissors') {
+				res = win;
+			} else {
+				res = draw;
+			}
+		}
+
+		if (p == 'paper') {
+			if (c == 'rock') {
+			  	res = win; 
+			} else if (c == 'scissors') {
+				res = lose;
+			} else {
+				res = draw;
+			}
+		}
+
+		if (p == 'scissors') {
+			if (c == 'paper') {
+			  	res = win; 
+			} else if (c == 'rock') {
+				res = lose;
+			} else {
+				res = draw;
+			}
+		}
+		return res;
+
+	}
+
+	const playerSelection = 'rock'
+	const computerSelection = computerPlay()
+	console.log(playRound(playerSelection, computerSelection))
+
+
 	</script>
 
+</body>
 </html>
-
