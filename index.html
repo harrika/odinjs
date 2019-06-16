@@ -4,54 +4,87 @@
 	<title>test bench</title>
 </head>
 <body>
-	<h3>test bench</h3>
+	<h3>The Rock Paper game</h3>
+	<button onclick="game()"> play rock paper sissors </button> 
+  	<p>by Henry M Kirya</p>
 
 	<script type="text/javascript">
-
-	ran = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
 		
 	computerPlay = () => {
-	  ss = ran(['Rock', 'Paper', 'Scissors']);
-	  return ss.toLowerCase();	
+		ran = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
+	  	ss = ran(['Rock', 'Paper', 'Scissors']);
+	  	return ss.toLowerCase();	
     } 
 
     function playRound(playerSelection, computerSelection) {    	
     	p = playerSelection;
     	c = computerSelection;
-
 		ad = 'you draw';
+		res = 0;
 		
 		if (p == 'rock') {
 			if (c == 'paper') {			  	
 			  	ad = "you lose paper beats rock"
+			  	res --;
 			} else if (c == 'scissors') {
 				ad = "you win rock beats scissors";
+				res++;
 			} 
 		}
 
 		if (p == 'paper') {
 			if (c == 'rock') {
 			  	ad = "you win paper beats rock"; 
+			  	res++;
 			} else if (c == 'scissors') {
 				ad = "you lose scissors beat paper";
+				res--;
 			} 
 		}
 
 		if (p == 'scissors') {
 			if (c == 'paper') {
 			  	ad = "you win scissors beat paper";
+			  	res++;
 			} else if (c == 'rock') {
 				ad = "you lose rock beats scissors";
+				res--;
 			} 
 		}
-		return ad;
+		console.log(ad);
+		return res;
 	}
 
-	const playerSelection = 'rock'
-	const computerSelection = computerPlay()
-	console.log(playRound(playerSelection, computerSelection))
+
+
+	function game() {
+		ff = [1,2,3,4,5]
+		finres = 0;
+		for (var e in ff) {
+
+			var playerSelection = '';
+			do  {
+				var playerSelection = prompt("Enter rock, paper or scissors");
+			} while (playerSelection == '')
+
+			const computerSelection = computerPlay()
+			finres = finres + playRound(playerSelection, computerSelection);			
+			}
+
+			if (finres>0) {
+				say = " CONGRATS YOU WIN!!"
+			} else if (finres == 0) {
+				say = " This is a DRAW!"
+			}else{
+				say = " The Computer wins this round"
+			}
+			console.log(finres, say);				
+		}
+
+	game()
 
 	</script>
 
 </body>
 </html>
+
