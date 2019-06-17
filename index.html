@@ -6,7 +6,9 @@
 <body>
 	<h3>The Rock Paper game</h3>
 	<button onclick="game()"> play rock paper sissors </button> 
-  	<p>by Henry M Kirya</p>
+  	<p>press Shit-Cntrl-I to view the console <br>
+  	your results will be displayed in the console <br>
+  	by Henry M Kirya</p>
 
 	<script type="text/javascript">
 		
@@ -64,7 +66,7 @@
 
 			var playerSelection = '';
 			do  {
-				var playerSelection = prompt("Enter rock, paper or scissors");
+				var playerSelection = window.prompt("Enter rock, paper or scissors");
 			} while (playerSelection == '')
 
 			const computerSelection = computerPlay()
