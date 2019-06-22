@@ -2,15 +2,35 @@
 <html>
 <head>
 	<title>test bench</title>
+	<style type="text/css">
+		.winner {
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
+	
 	<h3>The Rock Paper game</h3>
-	<button onclick="game()"> play rock paper sissors </button> 
-  	<p>press Shit-Cntrl-I to view the console <br>
-  	your results will be displayed in the console <br>
-  	by Henry M Kirya</p>
+
+	<h3>click a button to select</h3>
+	<button onclick="playselect('rock')"> Rock </button> 
+	<button onclick="playselect('paper')"> Paper </button> 
+	<button onclick="playselect('scissors')"> Scissors </button> 
+	<hr><br>
+
+	<div id="container"></div>
 
 	<script type="text/javascript">
+
+		var games = 0;
+		var finalresu = 0;
+		var finalresc = 0;
+
+		const container = document.querySelector('#container');
+		const content = document.createElement('div');
+		const content2 = document.createElement('div');
+		const content4 = document.createElement('div');
+		content4.classList.add('winner');
 		
 	computerPlay = () => {
 		ran = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
@@ -18,72 +38,72 @@
 	  	return ss.toLowerCase();	
     } 
 
-    function playRound(playerSelection, computerSelection) {    	
+
+    function playselect(ss) {
+    	if (finalresu>4 || finalresc >4) {
+    		content.textContent ="Refresh to start new Game";
+    	} else {
+    		finalres = playRound(ss);
+    		finalresu += finalres[0];
+    		finalresc += finalres[1];    	
+
+    		if (finalresu>4 || finalresc >4) {
+    			if (finalresu>finalresc) {
+    				winner = "...YOU"
+    			} else {
+    				winner = "...SUPERCOMPUTER"
+    			}
+ 				content.textContent = "FINAL result ******  COMPUTER: "+finalresc+" | YOUR RESULT: "+finalresu;
+ 				content4.textContent = "And the WINNER is ...............  "+winner; 
+    		} else {
+    		content.textContent ="Running results COMPUTER:   "+finalresc +"| YOU:   "+finalresu;
+    		}
+    	}
+    	container.appendChild(content);
+    	container.appendChild(content4);
+    }
+
+    function playRound(playerSelection) {    	
     	p = playerSelection;
-    	c = computerSelection;
+    	c = computerPlay();
 		ad = 'you draw';
-		res = 0;
+		resu = 0;
+		resc = 0;
 		
 		if (p == 'rock') {
 			if (c == 'paper') {			  	
 			  	ad = "you lose paper beats rock"
-			  	res --;
+			  	resc ++;
 			} else if (c == 'scissors') {
 				ad = "you win rock beats scissors";
-				res++;
+				resu++;
 			} 
 		}
 
 		if (p == 'paper') {
 			if (c == 'rock') {
 			  	ad = "you win paper beats rock"; 
-			  	res++;
+			  	resu++;
 			} else if (c == 'scissors') {
 				ad = "you lose scissors beat paper";
-				res--;
+				resc++;
 			} 
 		}
 
 		if (p == 'scissors') {
 			if (c == 'paper') {
 			  	ad = "you win scissors beat paper";
-			  	res++;
+			  	resu++;
 			} else if (c == 'rock') {
 				ad = "you lose rock beats scissors";
-				res--;
+				resc++;
 			} 
 		}
-		console.log(ad);
-		return res;
+		games += 1;
+		content2.textContent =ad+"......................... Games played:"+ games;
+		container.appendChild(content2);
+		return [resu, resc];
 	}
-
-
-
-	function game() {
-		ff = [1,2,3,4,5]
-		finres = 0;
-		for (var e in ff) {
-
-			var playerSelection = '';
-			do  {
-				var playerSelection = window.prompt("Enter rock, paper or scissors");
-			} while (playerSelection == '')
-
-			const computerSelection = computerPlay()
-			finres = finres + playRound(playerSelection, computerSelection);			
-			}
-
-			if (finres>0) {
-				say = " CONGRATS YOU WIN!!"
-			} else if (finres == 0) {
-				say = " This is a DRAW!"
-			}else{
-				say = " The Computer wins this round"
-			}
-			console.log(finres, say);				
-		}
-
-	game()
 
 	</script>
 
