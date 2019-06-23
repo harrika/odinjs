@@ -29,6 +29,7 @@
 		const container = document.querySelector('#container');
 		const content = document.createElement('div');
 		const content2 = document.createElement('div');
+		const content3 = document.createElement('div');
 		const content4 = document.createElement('div');
 		content4.classList.add('winner');
 		
@@ -41,7 +42,7 @@
 
     function playselect(ss) {
     	if (finalresu>4 || finalresc >4) {
-    		content.textContent ="Refresh to start new Game";
+    		content3.textContent ="Refresh to start new Game";
     	} else {
     		finalres = playRound(ss);
     		finalresu += finalres[0];
@@ -61,6 +62,7 @@
     	}
     	container.appendChild(content);
     	container.appendChild(content4);
+    	container.appendChild(content3);
     }
 
     function playRound(playerSelection) {    	
