@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test bench</title>
+	<title>rock paper scissors in javascript</title>
 	<style type="text/css">
 		.winner {
 			font-weight: bold;
@@ -66,41 +66,41 @@
     function playRound(playerSelection) {    	
     	p = playerSelection;
     	c = computerPlay();
-		ad = 'you draw';
+		ad = 'This is a DRAW';
 		resu = 0;
 		resc = 0;
 		
 		if (p == 'rock') {
 			if (c == 'paper') {			  	
-			  	ad = "you lose paper beats rock"
+			  	ad = "Computer wins:  Paper beats Rock"
 			  	resc ++;
 			} else if (c == 'scissors') {
-				ad = "you win rock beats scissors";
+				ad = "You win:   Rock beats Scissors";
 				resu++;
 			} 
 		}
 
 		if (p == 'paper') {
 			if (c == 'rock') {
-			  	ad = "you win paper beats rock"; 
+			  	ad = "You win:  Paper beats Rock"; 
 			  	resu++;
 			} else if (c == 'scissors') {
-				ad = "you lose scissors beat paper";
+				ad = "Computer wins:   Scissors beat Paper";
 				resc++;
 			} 
 		}
 
 		if (p == 'scissors') {
 			if (c == 'paper') {
-			  	ad = "you win scissors beat paper";
+			  	ad = "You win:   Scissors beat Paper";
 			  	resu++;
 			} else if (c == 'rock') {
-				ad = "you lose rock beats scissors";
+				ad = "Computer wins:   Rock beats Scissors";
 				resc++;
 			} 
 		}
 		games += 1;
-		content2.textContent =ad+"......................... Games played:"+ games;
+		content2.textContent =ad+"........................."+games+" games played";
 		container.appendChild(content2);
 		return [resu, resc];
 	}
